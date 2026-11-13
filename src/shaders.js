@@ -1,4 +1,5 @@
-// Simplex 3D noise by Ian McEwan / Ashima Arts (MIT).
+// Simplex 3D noise by Ian McEwan, Ashima Arts (https://github.com/stegu/webgl-noise).
+// MIT licensed; the copyright and permission notice is in THIRD_PARTY_NOTICES.md.
 const noise = /* glsl */ `
 vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
 vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
