@@ -17,3 +17,9 @@ pnpm build    # production build in dist/
 - `src/scene.js` — renderer, scroll keyframes, pointer/drag input, bloom.
 - `src/shaders.js` — GLSL for the shape, sky and star field.
 - `src/palettes.js` — colour palettes shared by the shaders and the UI.
+
+## Also in this repository
+
+- `death-quips/` — a Geode mod for Geometry Dash that shows a remark every time you die. See its
+  [README](death-quips/README.md).
+- `asm/countdown.s` — an x86-64 Linux assembly program that counts down from 10 to 0.
