@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aurora — an interactive study in light and form, rendered live in WebGL." />
+    <meta name="theme-color" content="#05060a" />
+    <title>Aurora — light, given form</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23ffe9b8'/%3E%3Cstop offset='.55' stop-color='%2338b6c9'/%3E%3Cstop offset='1' stop-color='%23101a4a'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23g)'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <header class="nav">
+      <a class="brand" href="#top"><span class="brand-dot"></span>Aurora</a>
+      <nav aria-label="Sections">
+        <a href="#form">Form</a>
+        <a href="#light">Light</a>
+        <a href="#motion">Motion</a>
+        <a href="#play">Play</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="panel left hero" data-scene>
+        <div class="copy">
+          <p class="eyebrow reveal">An interactive study · rendered live</p>
+          <h1 class="reveal">Light,<br />given <em>form</em>.</h1>
+          <p class="lede reveal">
+            A single living shape, sculpted from noise and lit by nothing but the angle you see it from.
+            Scroll to travel through it.
+          </p>
+          <div class="actions reveal">
+            <a class="button" href="#form">Begin <span aria-hidden="true">↓</span></a>
+            <span class="hint">Scroll to explore · drag to spin</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="form" class="panel right" data-scene>
+        <div class="copy">
+          <p class="eyebrow reveal"><span class="num">01</span> Form</p>
+          <h2 class="reveal">A sphere that refuses to sit <em>still</em>.</h2>
+          <p class="reveal">
+            Every vertex is pushed along its normal by layered simplex noise, then re-lit from its
+            displaced neighbours — so the surface stays liquid-smooth however far it stretches.
+          </p>
+        </div>
+      </section>
+
+      <section id="light" class="panel left" data-scene>
+        <div class="copy">
+          <p class="eyebrow reveal"><span class="num">02</span> Light</p>
+          <h2 class="reveal">Colour from angle, not from <em>paint</em>.</h2>
+          <p class="reveal">
+            There are no textures here. Hue is computed per pixel from how steeply the surface turns
+            away from you, the way oil film and soap bubbles shift as you move around them.
+          </p>
+        </div>
+      </section>
+
+      <section id="motion" class="panel center" data-scene>
+        <div class="copy wide">
+          <p class="eyebrow reveal"><span class="num">03</span> Motion</p>
+          <h2 class="reveal">Depth you can <em>scroll</em> through.</h2>
+          <div class="cards">
+            <article class="card reveal" data-tilt>
+              <span class="card-key">Scroll</span>
+              <h3>The camera is the scrollbar</h3>
+              <p>Each section is a keyframe. Position, scale, turbulence and hue ease between them as you move.</p>
+            </article>
+            <article class="card reveal" data-tilt>
+              <span class="card-key">Pointer</span>
+              <h3>Parallax that follows you</h3>
+              <p>The whole scene leans gently toward your cursor, separating foreground from the star field.</p>
+            </article>
+            <article class="card reveal" data-tilt>
+              <span class="card-key">Drag</span>
+              <h3>Give it a push</h3>
+              <p>Press and drag anywhere to throw the shape into a spin. It carries momentum, then settles.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="play" class="panel center bottom" data-scene>
+        <div class="copy wide">
+          <p class="eyebrow reveal"><span class="num">04</span> Play</p>
+          <h2 class="reveal">Now make it <em>yours</em>.</h2>
+          <div class="controls reveal">
+            <div class="control">
+              <span class="control-label" id="palette-label">Palette</span>
+              <div class="swatches" role="radiogroup" aria-labelledby="palette-label"></div>
+            </div>
+            <label class="control">
+              <span class="control-label">Turbulence</span>
+              <input id="turbulence" type="range" min="0" max="1" step="0.01" value="0.45" />
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Aurora — built with three.js and Vite.</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

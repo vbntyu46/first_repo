@@ -1,0 +1,88 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081"
+	},
+	"id": "vbntyu46.death-quips",
+	"name": "Death Quips",
+	"version": "v1.0.0",
+	"developer": "vbntyu46",
+	"description": "Shows a short remark every time you die, matched to how far you got.",
+	"tags": ["gameplay", "enhancement", "offline", "joke"],
+	"links": {
+		"source": "https://github.com/vbntyu46/first_repo"
+	},
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Enabled",
+			"description": "Show a quip when you die.",
+			"default": true
+		},
+		"show-stats": {
+			"type": "bool",
+			"name": "Show attempt and percent",
+			"description": "Add a small second line with the attempt number and the percent you died at.",
+			"default": true
+		},
+		"practice-mode": {
+			"type": "bool",
+			"name": "Show in practice mode",
+			"description": "Also show quips for deaths in practice mode.",
+			"default": false
+		},
+		"min-percent": {
+			"type": "int",
+			"name": "Minimum percent",
+			"description": "Only show a quip when you die at or past this percent. Ignored in platformer levels.",
+			"default": 0,
+			"min": 0,
+			"max": 100,
+			"control": {
+				"slider": true,
+				"slider-step": 1,
+				"input": true
+			}
+		},
+		"duration": {
+			"type": "float",
+			"name": "Time on screen",
+			"description": "How many seconds a quip stays visible before fading out.",
+			"default": 1.2,
+			"min": 0.5,
+			"max": 5,
+			"control": {
+				"slider": true,
+				"slider-step": 0.1,
+				"input": true
+			}
+		},
+		"scale": {
+			"type": "float",
+			"name": "Text size",
+			"description": "Size of the quip text.",
+			"default": 0.6,
+			"min": 0.3,
+			"max": 1.2,
+			"control": {
+				"slider": true,
+				"slider-step": 0.05,
+				"input": true
+			}
+		},
+		"custom-quips": {
+			"type": "string",
+			"name": "Custom quips",
+			"description": "Your own lines, separated by <cy>|</c>. Use <cg>{percent}</c> and <cg>{attempt}</c> to insert the current values, for example: <cy>Attempt {attempt} was a mistake | {percent}% is a number, I guess</c>",
+			"default": ""
+		},
+		"only-custom": {
+			"type": "bool",
+			"name": "Only use custom quips",
+			"description": "Use only your own lines instead of mixing them with the built-in ones. Has no effect while the custom list is empty.",
+			"default": false
+		}
+	}
+}

@@ -1,0 +1,64 @@
+name: Build Death Quips
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - death-quips/**
+      - .github/workflows/death-quips.yml
+  pull_request:
+    paths:
+      - death-quips/**
+      - .github/workflows/death-quips.yml
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - name: Windows
+            os: windows-latest
+
+          - name: macOS
+            os: macos-latest
+
+          # iOS is left out: the bindings' generated iOS source does not compile against
+          # Geode v5.11.2 at the moment. Re-add it (and "ios" in mod.json) once that is fixed upstream.
+
+          - name: Android32
+            os: ubuntu-latest
+            target: Android32
+
+          - name: Android64
+            os: ubuntu-latest
+            target: Android64
+
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the mod
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          path: death-quips
+          combine: true
+          target: ${{ matrix.config.target }}
+
+  package:
+    name: Package builds
+    runs-on: ubuntu-latest
+    needs: ['build']
+
+    steps:
+      - uses: geode-sdk/build-geode-mod/combine@main
+        id: build
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: Build Output
+          path: ${{ steps.build.outputs.build-output }}
