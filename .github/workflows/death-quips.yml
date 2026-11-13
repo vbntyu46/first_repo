@@ -25,9 +25,13 @@ jobs:
           - name: macOS
             os: macos-latest
 
+          # Bindings main generates iOS source that does not compile against Geode v5.11.2
+          # (FMOD types are used without being included), so iOS uses the bindings commit
+          # v5.11.2 was released against. Drop the pin when moving to a newer Geode.
           - name: iOS
             os: macos-latest
             target: iOS
+            bindings-ref: 1605f500d053f8de122bf5c7dc6d17c24866e02e
 
           - name: Android32
             os: ubuntu-latest
@@ -49,6 +53,7 @@ jobs:
           path: death-quips
           combine: true
           target: ${{ matrix.config.target }}
+          bindings-ref: ${{ matrix.config.bindings-ref }}
 
   package:
     name: Package builds
